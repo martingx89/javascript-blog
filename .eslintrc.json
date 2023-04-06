@@ -10,7 +10,7 @@
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": ["off"],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
     "semi": ["error", "always"],
     "no-console": ["off"],
     "no-prototype-builtins": ["off"]
