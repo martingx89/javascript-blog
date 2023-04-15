@@ -130,6 +130,8 @@ function generateTags() {
 generateTags();
 
 function tagClickHandler(event) {
+  /* [NEW] create a new variable allTags with an empty array */
+  // let allTags = [];
   /* prevent default action for this event */
   event.preventDefault();
 
