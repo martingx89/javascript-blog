@@ -44,9 +44,6 @@ const optArticleSelector = '.post',
   optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.list.tags';
 
-const tagList = document.querySelector(optTagsListSelector);
-console.log(tagList);
-
 function generateTitleLinks(customSelector = '') {
   /* remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
@@ -134,7 +131,6 @@ function generateTags() {
     /* insert HTML of all the links into the tags wrapper */
 
     tagList.innerHTML = html;
-    // console.log(tagList);
     /* END LOOP: for every article: */
   }
   /* [NEW] find list of tags in right column */
@@ -147,8 +143,6 @@ function generateTags() {
 generateTags();
 
 function tagClickHandler(event) {
-  /* [NEW] create a new variable allTags with an empty array */
-  // let allTags = [];
   /* prevent default action for this event */
   event.preventDefault();
 
