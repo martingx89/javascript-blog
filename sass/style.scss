@@ -89,6 +89,24 @@ body {
     font-weight: bold;
   }
 
+  .post-author {
+    font-style: italic;
+  }
+}
+
+.post-tags {
+  display: flex;
+  p {
+    margin: 0 10px 0 0;
+  }
+}
+
+.tags {
+  li {
+    display: inline-block;
+    margin: 5px;
+  }
+
   .tag-size-1 {
     a {
       font-size: 100%;
@@ -148,16 +166,5 @@ body {
 
   &.active {
     display: block;
-  }
-}
-
-.post-author {
-  font-style: italic;
-}
-
-.post-tags {
-  display: flex;
-  p {
-    margin: 0 10px 0 0;
   }
 }
