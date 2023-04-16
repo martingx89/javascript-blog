@@ -1,13 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
 
 /* Variables */
 
 $color-light: #fff;
 $color-dark: #444;
 
-$font-logo: "Sacramento", cursive;
-$font-header: "Oswald", sans-serif;
-$font-text: "Source Sans Pro", sans-serif;
+$font-logo: 'Sacramento', cursive;
+$font-header: 'Oswald', sans-serif;
+$font-text: 'Source Sans Pro', sans-serif;
 
 /* Global */
 
@@ -88,6 +88,43 @@ body {
   .active {
     font-weight: bold;
   }
+
+  .tag-size-1 {
+    a {
+      font-size: 75%;
+      color: rgb(94, 94, 94);
+    }
+  }
+  .tag-size-2 {
+    a {
+      font-size: 100%;
+      color: rgb(10, 239, 140);
+    }
+  }
+  .tag-size-3 {
+    a {
+      font-size: 125%;
+      color: rgb(10, 44, 239);
+    }
+  }
+  .tag-size-4 {
+    a {
+      font-size: 150%;
+      color: rgb(239, 10, 224);
+    }
+  }
+  .tag-size-5 {
+    a {
+      font-size: 175%;
+      color: rgb(239, 128, 10);
+    }
+  }
+  .tag-size-6 {
+    a {
+      font-size: 200%;
+      color: rgb(239, 10, 10);
+    }
+  }
 }
 
 .list-horizontal {
@@ -120,7 +157,6 @@ body {
 
 .post-tags {
   display: flex;
-
   p {
     margin: 0 10px 0 0;
   }

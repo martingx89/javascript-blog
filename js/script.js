@@ -42,7 +42,9 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.list.tags';
+  optTagsListSelector = '.list.tags',
+  optCloudClassCount = 5,
+  optCloudClassPrefix = 'tag-size-';
 
 function generateTitleLinks(customSelector = '') {
   /* remove contents of titleList */
@@ -87,6 +89,15 @@ function generateTitleLinks(customSelector = '') {
 
 generateTitleLinks();
 
+function calculateTagClass(count, params) {
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+
+  return optCloudClassPrefix + classNumber;
+}
+
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty array */
   let allTags = {};
@@ -115,7 +126,6 @@ function generateTags() {
     for (let tag of articleTagsArray) {
       /* generate HTML of the link */
       const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-      // console.log(linkHTML);
 
       /* add generated code to html variable */
       html += linkHTML + ' ';
@@ -144,10 +154,17 @@ function generateTags() {
   /* [NEW] add html from allTags to tagList */
   // tagList.innerHTML = allTags.join(' ');
 
+  const tagsParams = calculateTagsParams(allTags);
+  // console.log('tagsParams', tagsParams);
+
   let allTagsHTML = '';
   for (let tag in allTags) {
-    allTagsHTML += `<li> <a href="#tag-${tag}">${tag}</a><span> (${allTags[tag]})</span></li>`;
-    // console.log(allTagsHTML);
+    const tagLinkHTML = `<li class="${calculateTagClass(
+      allTags[tag],
+      tagsParams
+    )}"><a href="#tag-${tag}">${tag}</a></li>`; //<span> (${allTags[tag]})</span></li>
+    // allTagsHTML += `<li > <a href="#tag-${tag}">${tag}</a><span> (${allTags[tag]})</span></li>`;
+    allTagsHTML += tagLinkHTML;
   }
   tagList.innerHTML = allTagsHTML;
 }
@@ -270,3 +287,21 @@ function addClickListenersToAuthors() {
 }
 
 addClickListenersToAuthors();
+
+function calculateTagsParams(tags) {
+  const params = {
+    max: 0,
+    min: 999999,
+  };
+
+  for (let tag in tags) {
+    // console.log(tag + ' is used ' + tags[tag] + ' times');
+    if (tags[tag] > params.max) {
+      params.max = tags[tag];
+    }
+    if (tags[tag] < params.min) {
+      params.min = tags[tag];
+    }
+  }
+  return params;
+}
