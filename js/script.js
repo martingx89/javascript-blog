@@ -146,7 +146,8 @@ function generateTags() {
 
   let allTagsHTML = '';
   for (let tag in allTags) {
-    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+    allTagsHTML += `<li> <a href="#tag-${tag}">${tag}</a><span> (${allTags[tag]})</span></li>`;
+    // console.log(allTagsHTML);
   }
   tagList.innerHTML = allTagsHTML;
 }
