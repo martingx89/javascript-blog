@@ -96,6 +96,7 @@ body {
 
 .post-tags {
   display: flex;
+
   p {
     margin: 0 10px 0 0;
   }
@@ -113,30 +114,35 @@ body {
       color: rgb(94, 94, 94);
     }
   }
+
   .tag-size-2 {
     a {
       font-size: 120%;
       color: rgb(10, 239, 140);
     }
   }
+
   .tag-size-3 {
     a {
       font-size: 130%;
       color: rgb(10, 44, 239);
     }
   }
+
   .tag-size-4 {
     a {
       font-size: 140%;
       color: rgb(239, 10, 224);
     }
   }
+
   .tag-size-5 {
     a {
       font-size: 150%;
       color: rgb(239, 128, 10);
     }
   }
+  
   .tag-size-6 {
     a {
       font-size: 160%;
