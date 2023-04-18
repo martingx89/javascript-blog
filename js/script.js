@@ -6,6 +6,9 @@ const templates = {
   tagLink: Handlebars.compile(
     document.querySelector('#template-tag-link').innerHTML
   ),
+  authorLink: Handlebars.compile(
+    document.querySelector('#template-author-link').innerHTML
+  ),
 };
 const opts = {
   tagSizes: {
@@ -262,11 +265,17 @@ function generateAuthors() {
 
     const articleAuthor = article.getAttribute('data-author');
 
+    const linkHTMLData = { id: articleAuthor, title: articleAuthor };
+    const linkHTML = templates.authorLink(linkHTMLData);
+
     if (!allAuthorsList.hasOwnProperty(articleAuthor)) {
       allAuthorsList[articleAuthor] = 1;
     } else {
       allAuthorsList[articleAuthor]++;
     }
+
+    html += linkHTML;
+
     authorWrapper.innerHTML = html;
   }
   const authorList = document.querySelector(select.listOf.authors);
