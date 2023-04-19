@@ -9,6 +9,9 @@ const templates = {
   authorLink: Handlebars.compile(
     document.querySelector('#template-author-link').innerHTML
   ),
+  tagCloudLink: Handlebars.compile(
+    document.querySelector('#template-tag-cloud-link').innerHTML
+  ),
 };
 const opts = {
   tagSizes: {
@@ -183,16 +186,23 @@ function generateTags() {
   const tagsParams = calculateTagsParams(allTags);
   // console.log('tagsParams', tagsParams);
 
-  let allTagsHTML = '';
+  // let allTagsHTML = '';
+  const allTagsData = { tags: [] };
   for (let tag in allTags) {
-    const tagLinkHTML = `<li class="${calculateTagClass(
-      allTags[tag],
-      tagsParams
-    )}"><a href="#tag-${tag}">${tag}</a></li>`; //<span> (${allTags[tag]})</span></li>
-    // allTagsHTML += `<li > <a href="#tag-${tag}">${tag}</a><span> (${allTags[tag]})</span></li>`;
-    allTagsHTML += tagLinkHTML;
+    // const tagLinkHTML = `<li class="${calculateTagClass(
+    //   allTags[tag],
+    //   tagsParams
+    // )}"><a href="#tag-${tag}">${tag}</a></li>`; //<span> (${allTags[tag]})</span></li>
+    // // allTagsHTML += `<li > <a href="#tag-${tag}">${tag}</a><span> (${allTags[tag]})</span></li>`;
+    // allTagsHTML += tagLinkHTML;
+    allTagsData.tags.push({
+      tag: tag,
+      count: allTags[tag],
+      className: calculateTagClass(allTags[tag], tagsParams),
+    });
   }
-  tagList.innerHTML = allTagsHTML;
+  // tagList.innerHTML = allTagsHTML;
+  tagList.innerHTML = templates.tagCloudLink(allTagsData);
 }
 
 generateTags();
